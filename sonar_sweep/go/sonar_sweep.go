@@ -17,7 +17,7 @@ func get_inputs() ([]int, error) {
     return []int{}, errors.New("There was a problem identifying the source file path")
   }
 
-  data_file_path := path.Join(path.Dir(current_filename), "..", "..", "inputs.txt")
+  data_file_path := path.Join(path.Dir(current_filename), "..", "inputs.txt")
   file, err := os.Open(data_file_path)
 
   defer file.Close()
