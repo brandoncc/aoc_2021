@@ -1,18 +1,10 @@
 # frozen_string_literal: true
 
-class Input
-  attr_reader :lines
-
-  PATH = File.expand_path("#{File.dirname(__FILE__)}../../inputs.txt")
-
-  def initialize
-    @lines = File.read(PATH).lines.map(&:to_i)
-  end
-end
+require_relative '../aoc'
 
 class NoisySolution
   def solution
-    inputs = Input.new.lines
+    inputs = Aoc::Input.new(1).lines.map(&:to_i)
     last = inputs.first
     count = 0
 
@@ -27,7 +19,7 @@ end
 
 class WindowedSolution
   def solution
-    inputs = Input.new.lines
+    inputs = Aoc::Input.new(1).lines.map(&:to_i)
     last = inputs.first(3).inject(:+)
     count = 0
 

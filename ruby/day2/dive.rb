@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+require_relative '../aoc'
+
 class Submarine
   def initialize
     @horizontal = 0
@@ -50,7 +54,7 @@ class CommandParser
   end
 end
 
-inputs = File.readlines(File.expand_path("#{File.dirname(__FILE__)}/../inputs.txt"))
+inputs = Aoc::Input.new(2).lines
 
 sub1 = BasicSubmarine.new
 sub2 = AimableSubmarine.new
