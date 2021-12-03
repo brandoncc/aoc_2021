@@ -1,6 +1,8 @@
 package submarine2
 
-import "dive/aoc"
+import (
+	"aoc/day2/commands"
+)
 
 type Submarine struct {
   horizontal int
@@ -8,7 +10,7 @@ type Submarine struct {
   aim int
 }
 
-func (s *Submarine) ProcessCommand(c aoc.CommandSet) {
+func (s *Submarine) ProcessCommand(c commands.CommandSet) {
   switch c.Name {
   case "up": s.up(c.Amount)
   case "down": s.down(c.Amount)

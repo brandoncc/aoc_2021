@@ -1,4 +1,4 @@
-package main
+package day1
 
 import (
 	"bufio"
@@ -71,14 +71,30 @@ func windowed_count(inputs []int) int {
   return count
 }
 
-func main() {
-  inputs, err := get_inputs()
+func parse_inputs(inputs []string) ([]int, error) {
+  var parsed []int
 
-  if err != nil {
-    fmt.Println(errors.New(fmt.Sprintf("There was an error: %s", err)))
-    os.Exit(1)
+  for _, v := range inputs {
+    num, err := strconv.Atoi(v)
+
+    if err != nil {
+      return []int{}, fmt.Errorf("There was a problem converting %s to an int", v)
+    }
+
+    parsed = append(parsed, num)
   }
 
-  fmt.Println(fmt.Sprintf("The first answer is %d", noisy_count(inputs)))
-  fmt.Println(fmt.Sprintf("The second answer is %d", windowed_count(inputs)))
+  return parsed, nil
+}
+
+func Run(inputs []string) {
+  numeric_inputs, err := parse_inputs(inputs)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+
+  fmt.Println(fmt.Sprintf("The first answer is %d", noisy_count(numeric_inputs)))
+  fmt.Println(fmt.Sprintf("The second answer is %d", windowed_count(numeric_inputs)))
 }
