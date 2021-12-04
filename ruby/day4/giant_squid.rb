@@ -78,15 +78,18 @@ while inputs.any?
   inputs.shift
 end
 
-winner = nil
+winners = []
 
 draws.each do |d|
-  break if winner
+  break if winners.count == boards.count
 
   boards.each do |b|
+    next if winners.include?(b)
+
     b.call_number(d)
-    winner = b if b.won?
+    winners << b if b.won?
   end
 end
 
-puts "The first solution is #{winner.points * winner.winning_call}"
+puts "The first solution is #{winners.first.points * winners.first.winning_call}"
+puts "The second solution is #{winners.last.points * winners.last.winning_call}"
