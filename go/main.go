@@ -1,14 +1,14 @@
 package main
 
 import (
-	"aoc/day1"
-	"aoc/day2"
 	"bufio"
 	"errors"
 	"path"
 	"runtime"
+	"aoc/day1"
+	"aoc/day2"
+	"aoc/day3"
 
-	// "aoc/day3"
 	// "aoc/day4"
 	// "aoc/day5"
 	// "aoc/day6"
@@ -68,7 +68,7 @@ func run(day int) {
   switch day {
   case 1: day1.Run(get_commands(day))
   case 2: day2.Run(get_commands(day))
-  // case 3: day3.Run(get_commands(day))
+  case 3: day3.Run(get_commands(day))
   // case 4: day4.Run(get_commands(day))
   // case 5: day5.Run(get_commands(day))
   // case 6: day6.Run(get_commands(day))
