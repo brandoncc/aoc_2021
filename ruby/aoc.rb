@@ -8,7 +8,7 @@ module Aoc
 
     def initialize(day)
       @day = day
-      @lines = File.read(path).lines
+      @lines = File.read(path).lines.map(&:chomp)
     end
 
     private
