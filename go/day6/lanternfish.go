@@ -9,9 +9,11 @@ import (
 
 type fish int
 
+const day_count = 9
+
 func parse_fishes(inputs []string) []fish {
   m := regexp.MustCompile("[0-9]")
-  var fishes[]fish
+  fishes := make([]fish, day_count)
 
   days := m.FindAllString(inputs[0], -1)
 
@@ -23,25 +25,37 @@ func parse_fishes(inputs []string) []fish {
       os.Exit(1)
     }
 
-    fishes = append(fishes, fish(num))
+    fishes[num]++
   }
 
   return fishes
 }
 
 func pass_day(fishes []fish) []fish {
-  for i, f := range fishes {
-    give_birth := f == 0
+  new_fishes := make([]fish, day_count)
 
-    if give_birth {
-      fishes[i] = 6
-      fishes = append(fishes, fish(8))
-    } else {
-      fishes[i] = f - 1
-    }
+  new_fishes[6] = fishes[0] + fishes[7]
+  new_fishes[8] = fishes[0]
+
+  new_fishes[0] = fishes[1]
+  new_fishes[1] = fishes[2]
+  new_fishes[2] = fishes[3]
+  new_fishes[3] = fishes[4]
+  new_fishes[4] = fishes[5]
+  new_fishes[5] = fishes[6]
+  new_fishes[7] = fishes[8]
+
+  return new_fishes
+}
+
+func count(fishes []fish) fish {
+  total := fish(0)
+
+  for i := 0; i < day_count; i++ {
+    total += fishes[i]
   }
 
-  return fishes
+  return total
 }
 
 func solution1(fishes []fish) {
@@ -49,7 +63,7 @@ func solution1(fishes []fish) {
     fishes = pass_day(fishes)
   }
 
-  fmt.Println(fmt.Sprintf("The first solution is %d", len(fishes)))
+  fmt.Println(fmt.Sprintf("The first solution is %d", count(fishes)))
 }
 
 func solution2(fishes []fish) {
@@ -57,7 +71,7 @@ func solution2(fishes []fish) {
     fishes = pass_day(fishes)
   }
 
-  fmt.Println(fmt.Sprintf("The first solution is %d", len(fishes)))
+  fmt.Println(fmt.Sprintf("The first solution is %d", count(fishes)))
 }
 
 func Run(inputs []string) {
