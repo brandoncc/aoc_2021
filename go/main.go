@@ -11,7 +11,7 @@ import (
 	"aoc/day4"
 	"aoc/day5"
 	"aoc/day6"
-	// "aoc/day7"
+	"aoc/day7"
 	// "aoc/day8"
 	// "aoc/day9"
 	// "aoc/day10"
@@ -71,7 +71,7 @@ func run(day int) {
   case 4: day4.Run(get_commands(day))
   case 5: day5.Run(get_commands(day))
   case 6: day6.Run(get_commands(day))
-  // case 7: day7.Run(get_commands(day))
+  case 7: day7.Run(get_commands(day))
   // case 8: day8.Run(get_commands(day))
   // case 9: day9.Run(get_commands(day))
   // case 10: day10.Run(get_commands(day))
